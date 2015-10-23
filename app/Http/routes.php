@@ -15,7 +15,7 @@ $app->get('/', function() use ($app) {
     return "Lumen (<a href='http://lumen.laravel.com'>lumen.laravel.com</a>) RESTful API By NEXT LEVEL SHIT (<a href='http://dailysh.it'>www.dailysh.it</a>)";
 });
 
-$app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], function($app)
+$app->group(['prefix' => 'v1','namespace' => 'App\Http\Controllers'], function($app)
 {
     $app->get('task','TaskController@index');
 
