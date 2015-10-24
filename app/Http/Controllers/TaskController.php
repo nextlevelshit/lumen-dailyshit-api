@@ -74,9 +74,9 @@ class TaskController extends Controller {
 
     public function updateTask(Request $request,$id){
         $Task  = Task::find($id);
-        $Task->title = $request->input('title');
-        $Task->author = $request->input('description');
-        $Task->isbn = $request->input('repetition');
+        $Task->name = $request->input('name');
+        $Task->description = $request->input('description');
+        $Task->repetition = $request->input('repetition');
         $Task->save();
 
         return response()->json($Task);
