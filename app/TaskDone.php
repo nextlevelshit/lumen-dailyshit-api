@@ -20,4 +20,9 @@ class TaskDone extends Model
      */
     protected $fillable = ['task_id', 'done'];
 
+    public function task()
+    {
+        return $this->belongsTo('App\Task', 'task_id');
+    }
+
 }
