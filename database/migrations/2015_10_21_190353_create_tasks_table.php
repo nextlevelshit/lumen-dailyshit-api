@@ -20,6 +20,20 @@ class CreateTasksTable extends Migration
                   ->default('daily');
             $table->timestamps();
         });
+
+        Schema::create('task_done', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('date');
+            $table->boolean('done')
+                  ->default(true);
+            $table->integer('task_id')->unsigned();
+            $table->timestamps();
+
+            $table->foreign('task_id')
+                ->references('id')
+                ->on('tasks')
+                ->onDelete('cascade');
+        });
     }
 
     /**
@@ -30,5 +44,6 @@ class CreateTasksTable extends Migration
     public function down()
     {
         Schema::drop('tasks');
+        Schema::drop('task_done');
     }
 }
