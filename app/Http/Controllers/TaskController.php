@@ -88,8 +88,12 @@ class TaskController extends Controller {
     public function changeDone(Request $request,$id)
     {
         $Task  = Task::find($id);
-        $TaskDone  = TaskDone::where('task_id', $id)->get()->first();
+        
+	if(!$TaskDone = TaskDone::where('task_id', $id)->where('date', $request->input('date'))->get()->first()) {
+		$TaskDone = TaskDone::create(['task_id' => $id]);
+	}
         $TaskDone->done = $request->input('done');
+	$TaskDone->date = $request->input('date');
         $TaskDone->save();
 
         return response()->json($TaskDone);
