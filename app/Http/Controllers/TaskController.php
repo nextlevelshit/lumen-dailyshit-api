@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Task;
+use App\TaskDone;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -81,6 +82,17 @@ class TaskController extends Controller {
         $Task->save();
 
         return response()->json($Task);
+    }
+
+
+    public function changeDone(Request $request,$id)
+    {
+        $Task  = Task::find($id);
+        $TaskDone  = TaskDone::where('task_id', $id)->get()->first();
+        $TaskDone->done = $request->input('done');
+        $TaskDone->save();
+
+        return response()->json($TaskDone);
     }
 
 }

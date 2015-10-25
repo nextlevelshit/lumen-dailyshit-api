@@ -26,4 +26,6 @@ $app->group(['prefix' => 'v1','namespace' => 'App\Http\Controllers'], function($
     $app->post('task/{id}/edit','TaskController@updateTask');
 
     $app->post('task/{id}/delete','TaskController@deleteTask');
+
+    $app->post('task/{id}/done','TaskController@changeDone');
 });
