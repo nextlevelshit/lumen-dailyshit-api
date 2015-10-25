@@ -46,7 +46,8 @@ class TaskController extends Controller {
 
         $Task = Task::create($request->all());
 
-        return response()->json($Task);
+        // return response()->json($Task);
+	return $request;
 
     }
 

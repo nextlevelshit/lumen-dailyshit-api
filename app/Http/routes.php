@@ -23,7 +23,7 @@ $app->group(['prefix' => 'v1','namespace' => 'App\Http\Controllers'], function($
 
     $app->post('task','TaskController@createTask');
 
-    $app->put('task/{id}','TaskController@updateTask');
+    $app->post('task/{id}/edit','TaskController@updateTask');
 
-    $app->delete('task/{id}','TaskController@deleteTask');
+    $app->post('task/{id}/delete','TaskController@deleteTask');
 });
